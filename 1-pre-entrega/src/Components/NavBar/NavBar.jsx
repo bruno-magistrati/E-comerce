@@ -1,21 +1,21 @@
 import React from 'react'
 import styled from 'styled-components'
 import CartWidget from '../CartWidget/CartWidget'
-import logo from '../../assets/logo-atenea.png'
-
+import {Link} from 'react-router-dom';
 function NavBar() {
   return (
     <>
       <NavStyle>
         <div>
-        <a className='Logo' href="">One of Others</a>
+          <a className='Logo' href="">One of Others</a>        
         </div>
-        <div>
-        <a href="#h">Inicio</a>
-        <a href="#h">Tienda</a>
-        <a href="#h">Nostros</a>
+        <div className='Botones'>
+          <Link to='/' className='inicio'>Inicio</Link>
+          <Link to='/Tienda' className='tienda'>Tienda</Link>
+
+
         </div>
-      <a href=""><CartWidget/></a>
+      <Link to='/Carrito' className='carrito'><CartWidget/></Link>
       </NavStyle>
     </>
   )
@@ -35,10 +35,13 @@ const NavStyle = styled.nav`
     font-size:30px;
     margin: 5px;
 }
+.Botones{
+  display:flex;
+  align-items:center;
+}
   a{
     color: white;
     text-decoration: none;
     margin-right: 1rem;
 }
-
 `

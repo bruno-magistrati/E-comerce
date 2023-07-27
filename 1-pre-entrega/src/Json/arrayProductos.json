@@ -1,0 +1,37 @@
+[
+    {"id":1, "nombre":"Zapatiila Nike Classic",
+    "descripcion":"Zapatiilas Blancas Clasicas de Nike",
+    "imagen":"https://i.postimg.cc/xjxhQW55/Nike-classic.webp", 
+    "precio":5000, "stock": 20,
+    "categoria": "zapatillas"},
+
+    {"id":2, "nombre":"Zapatiila Nike Negras",
+    "descripcion":"Zapatiilas Negras Clasicas de Nike",
+    "imagen":"https://i.postimg.cc/L8fbzhpQ/Nike-Negras.jpg",
+    "precio":5000, "stock": 20, 
+    "categoria": "zapatillas"},
+
+    {"id":3, "nombre":"Zapatiila Nike Air Zoom",
+    "descripcion":"Zapatiilas Air Zoom de Nike",
+    "imagen":"https://i.postimg.cc/GpCSzr3L/Nike-Air-Zoom.jpg",
+    "precio":5000, "stock": 20, 
+    "categoria": "zapatillas"},
+
+    {"id":4, "nombre":"Gorra Nike Classic",
+    "descripcion":"Gorra Blanca Clasica de Nike",
+    "imagen":"https://i.postimg.cc/rFDbwQYk/Gorra-Blanca.jpg",
+    "precio":5000, "stock": 20, 
+    "categoria": "gorras"},
+
+    {"id":5, "nombre":"Gorra Nike Classic",
+    "descripcion":"Zapatiilas Negra de Nike",
+    "imagen":"https://i.postimg.cc/pr66BFr4/Gorra-Negra.jpg",
+    "precio":5000, "stock": 20, 
+    "categoria": "gorras"},
+
+    {"id":6, "nombre":"Gorra Nike Classic",
+    "descripcion":"Gorra Roja de Nike",
+    "imagen":"https://i.postimg.cc/jdB1wPGJ/Gorra-Roja.jpg",
+    "precio":5000, "stock": 20, 
+    "categoria": "gorras"}
+]
