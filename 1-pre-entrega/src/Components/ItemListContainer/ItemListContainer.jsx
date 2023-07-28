@@ -8,12 +8,12 @@ import styled from 'styled-components';
 
 const ItemListContainer = () => {
   const [item, setItem] = useState([]);
-  const {id} =useParams();
+  const {id} = useParams();
     useEffect(()=>{
       const promesa = new Promise((resolve)=>{
         setTimeout(()=>{
-          resolve(id ? arrayProductos .filter (item=> item.categoria === id) : arrayProductos)
-        }, 2000)
+          resolve(id ? arrayProductos.filter (item=> item.categoria === id) : arrayProductos)
+        }, 1000)
       });
       promesa.then((data)=>{
         setItem(data)
@@ -32,6 +32,8 @@ const ItemListContainer = () => {
 export default ItemListContainer
 
 const ItemListContainterStyled =styled.div `
-  
-
-`
+  width:1000px;
+  height:500px;
+  /* display:grid;
+  grid-template-columns:100px 100px; */
+  ` 

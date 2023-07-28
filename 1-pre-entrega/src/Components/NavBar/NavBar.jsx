@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import CartWidget from '../CartWidget/CartWidget'
-import {Link} from 'react-router-dom';
+import {Link, NavLink} from 'react-router-dom';
 function NavBar() {
   return (
     <>
@@ -10,10 +10,22 @@ function NavBar() {
           <a className='Logo' href="">One of Others</a>        
         </div>
         <div className='Botones'>
+          <ul className='menu-horizontal'>
+          <li>
           <Link to='/' className='inicio'>Inicio</Link>
+          </li>
+          <li>
           <Link to='/Tienda' className='tienda'>Tienda</Link>
-
-
+          </li>
+              <ul className='menu-vertical'>
+                <li>
+              <NavLink to={'/categoria/gorras'}> Gorras </NavLink>    
+                </li>
+                <li>
+              <NavLink  to={"/categoria/zapatillas"}>zapatillas</NavLink>
+                </li>
+              </ul>
+          </ul>
         </div>
       <Link to='/Carrito' className='carrito'><CartWidget/></Link>
       </NavStyle>
@@ -36,12 +48,30 @@ const NavStyle = styled.nav`
     margin: 5px;
 }
 .Botones{
-  display:flex;
   align-items:center;
 }
   a{
     color: white;
     text-decoration: none;
     margin-right: 1rem;
+}
+.menu-horizontal{
+  display:flex;
+  justify-content:space-around;
+}
+.menu-horizontal li:hover{
+background-color:red;
+}
+.menu-horizontal li {
+  display:block;
+}
+
+.menu-vertical{
+  /* display:none; */
+  /* position:absolute; */
+  width:200px;
+}
+.menu-vertical li:hover .menu-horizontal{
+  /* display:block; */
 }
 `

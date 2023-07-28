@@ -6,11 +6,12 @@ const ItemList = ({item}) => {
 return (
     <div>
         {
-        item.map(item=>
+        item.map(item =>
             <CardStyle key={item.id}>
-
+                <div>
             <Item item={item}/>
             <button>Agregar al Carrito</button>
+                </div>
             </CardStyle>
                 )
         }
@@ -22,7 +23,8 @@ export default ItemList
 
 const CardStyle = Styled.div`
 width: 100px;
-background-color:blue;
-/* display:flex; */
-
+background-color:#222552dd;
+width:100px;
+height:200px;
+margin:20px;
 `
