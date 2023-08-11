@@ -1,30 +1,24 @@
 import React from 'react'
 import { useEffect,useState } from 'react';
 import {useParams} from 'react-router-dom';
-import arrayProductos from '../../Json/arrayProductos.json';
 import ItemDetail from '../ItemDetail/ItemDetail';
-import Styled from 'styled-components'
+import {getFirestore,doc, getDoc} from 'firebase/firestore';
+import Styled from 'styled-components';
 
 const ItemDetailContainer = () => {
   const [item, setItem] = useState([]);
   const {id} =useParams();
     useEffect(()=>{
-      const promesa = new Promise((resolve)=>{
-        setTimeout(()=>{
-          resolve(arrayProductos.find(item=> item.id === parseInt(id)))
-        }, 1000)
-      });
-      promesa.then((data)=>{
-        setItem(data)
-      })
+const querydb = getFirestore();
+const queryDoc = doc(querydb,'datosProductos', '0Tr6tx8bUKrGiSd7y2iu');
+getDoc (queryDoc)
+.then(res => setItem({id: res.id, ...res.data()}))
     }, [id])
 
 
   return (
     <ItemDetailContainerStyled>
-      <div>
       <ItemDetail item={item} />
-      </div>
       </ItemDetailContainerStyled>
   )
 }
@@ -32,18 +26,20 @@ const ItemDetailContainer = () => {
 export default ItemDetailContainer
 
 const ItemDetailContainerStyled = Styled.div`
-div{
+
 background-color:#222552dd;
+display: flex;
+justify-content: center;
+align-items: center;
 color:#fff;
 img{
   width:300px;
-  position:absolute;
+  border:20px solid black;
 }
 h2{
-  font-size:30px;
 }
 p{
   font-size:22px;
 }
-}
+
 `

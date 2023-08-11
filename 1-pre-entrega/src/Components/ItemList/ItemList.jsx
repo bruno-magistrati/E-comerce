@@ -4,27 +4,30 @@ import Styled from 'styled-components'
 
 const ItemList = ({item}) => {
 return (
-    <div>
+    <>
         {
         item.map(item =>
             <CardStyle key={item.id}>
-                <div>
             <Item item={item}/>
-            <button>Agregar al Carrito</button>
-                </div>
             </CardStyle>
                 )
         }
-    </div>
+    </>
 )
 }
-
 export default ItemList
 
 const CardStyle = Styled.div`
-width: 100px;
 background-color:#222552dd;
-width:100px;
-height:200px;
-margin:20px;
+div
+{width:250px;
+color:white;
+p{
+    font-size:20px;
+    margin:1px
+}
+button{
+font-size:25px 
+}
+}
 `

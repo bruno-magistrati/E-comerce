@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
-import styles from 'styled-components'
+import styled from 'styled-components'
 import carrito from '../../assets/carrito-de-compras.png'
 
 function CartWidget() {
@@ -16,7 +16,7 @@ function CartWidget() {
 
 export default CartWidget
 
-const EstiloCar = styles.div `
+const EstiloCar = styled.div `
 display:flex;
 img{
   width: 70px;}

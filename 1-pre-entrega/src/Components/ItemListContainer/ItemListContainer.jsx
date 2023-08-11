@@ -1,39 +1,46 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import arrayProductos from '../../Json/arrayProductos.json';
+import {getFirestore, collection, getDocs, query, where} from 'firebase/firestore'
 import ItemList from '../ItemList/ItemList';
 // estilos 
 import styled from 'styled-components';
 
 const ItemListContainer = () => {
-  const [item, setItem] = useState([]);
-  const {id} = useParams();
-    useEffect(()=>{
-      const promesa = new Promise((resolve)=>{
-        setTimeout(()=>{
-          resolve(id ? arrayProductos.filter (item=> item.categoria === id) : arrayProductos)
-        }, 1000)
-      });
-      promesa.then((data)=>{
-        setItem(data)
-      })
-    },[id] )
 
+  const { categoryId } = useParams()
+  const [datosProductos, setItems] = useState() //State donde grabo los items
+
+
+  const getData = async (categoria) => {
+    const querydb = getFirestore();
+    const queryCollection = categoria
+    ? query(collection(querydb, 'datosProductos'), where("categoria", "==", categoria))
+    : collection(querydb, 'datosProductos');
+    const res = await getDocs(queryCollection);
+    const data = res.docs.map(p => ({ id: p.id, ...p.data() }));
+    setItems(data)
+  }
+
+  useEffect(() => {
+    getData(categoryId)
+  }, [categoryId])
   return (
-    <div>
+    <>
       <ItemListContainterStyled>
-        <ItemList item={item}/>
+        <ItemList item={datosProductos}/>
       </ItemListContainterStyled>   
-
-      </div>
+      </>
   )
 }
 export default ItemListContainer
 
 const ItemListContainterStyled =styled.div `
-  width:1000px;
-  height:500px;
-  /* display:grid;
-  grid-template-columns:100px 100px; */
+display:flex;
+align-items:center;
+flex-flow: row, wrap;
+justify-content: space-around;  
+background-color:blue;
+flex-wrap:wrap;
+width:900px;
   ` 
