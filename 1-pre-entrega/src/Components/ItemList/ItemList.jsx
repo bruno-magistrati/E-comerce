@@ -19,15 +19,11 @@ export default ItemList
 
 const CardStyle = Styled.div`
 background-color:#222552dd;
-div
-{width:250px;
-color:white;
-p{
-    font-size:20px;
-    margin:1px
-}
-button{
-font-size:25px 
-}
+margin:20px;
+width:250px;
+p, button{
+    color: white;
+    font-size:15px;
+
 }
 `

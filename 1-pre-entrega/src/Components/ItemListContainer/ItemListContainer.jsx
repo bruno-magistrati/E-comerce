@@ -9,8 +9,7 @@ import styled from 'styled-components';
 const ItemListContainer = () => {
 
   const { categoryId } = useParams()
-  const [datosProductos, setItems] = useState() //State donde grabo los items
-
+  const [datosProductos, setItems] = useState([]) //State donde grabo los items
 
   const getData = async (categoria) => {
     const querydb = getFirestore();
@@ -37,10 +36,5 @@ export default ItemListContainer
 
 const ItemListContainterStyled =styled.div `
 display:flex;
-align-items:center;
-flex-flow: row, wrap;
-justify-content: space-around;  
 background-color:blue;
-flex-wrap:wrap;
-width:900px;
-  ` 
+  `   

@@ -7,21 +7,28 @@ import Tienda from './Components/screens/Tienda';
 import Error from './Components/screens/error';
 import ItemDetailContainer from './Components/ItemDetailContainer/ItemDetailContainer'
 import ItemListContainer from './Components/ItemListContainer/ItemListContainer';
+import { Checkout } from './Components/Checkout/Checkout';
+import CartProvider from './context/CartContext';
+import {Cart} from './Components/Cart/Cart'
+
 
 function App() {
   return (
+   <CartProvider>
     <BrowserRouter>
       <NavBar/>
       <Routes>
         <Route path={"/"} element={<Home/>}/>
         <Route path={"/Tienda"} element={<Tienda/>}/>
-        <Route path={"/categoria/:id"} element={<ItemListContainer/>} />
+        <Route path={"/categoria/:categoryId"} element={<ItemListContainer/>} />
         <Route path={"/item/:id"} element={<ItemDetailContainer/>} />
+        <Route path={"/Checkout"} element={<Checkout/>}/>
         <Route path={"/CartWidget"} element={<CartWidget/>}/>
-
+        <Route path="/cart" element={<Cart />} />
         <Route path='*' element={<Error/>}/>
       </Routes>
     </BrowserRouter>
+   </CartProvider>
   );
 }
 

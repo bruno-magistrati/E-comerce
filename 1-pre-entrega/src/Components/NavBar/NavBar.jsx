@@ -7,7 +7,7 @@ function NavBar() {
     <>
       <NavStyle>
         <div>
-          <a className='Logo' href="">One of Others</a>        
+          <h1 className='Logo'>One of Others</h1>        
         </div>
         <div className='Botones'>
           <ul className='menu-horizontal'>
@@ -25,6 +25,9 @@ function NavBar() {
               <NavLink  to={"/categoria/zapatillas"}>zapatillas</NavLink>
                 </li>
               </ul>
+          <li>
+          <Link to='/Checkout' className='tienda'>Ver Checkout</Link>
+          </li>
           </ul>
         </div>
       <Link to='/Carrito' className='carrito'><CartWidget/></Link>
@@ -46,6 +49,7 @@ const NavStyle = styled.nav`
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size:30px;
     margin: 5px;
+    color:white;
 }
 .Botones{
   align-items:center;
