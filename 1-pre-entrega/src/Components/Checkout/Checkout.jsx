@@ -1,6 +1,7 @@
 import { addDoc, collection, getFirestore } from 'firebase/firestore'
 import React, { useContext, useState } from 'react'
 import { CartContext } from '../../context/CartContext'
+import styled from 'styled-components'
 
 
 export const Checkout = () => {
@@ -37,11 +38,15 @@ export const Checkout = () => {
     }
 
     return (
-        <>
+        <Formulario>
+            <section className='seccion'>
+            <div>
             <h1>Formulario</h1>
             <hr />
+            </div>
+            <br />
             {!orderId && <form onSubmit={handleSubmit}>
-                <input type="text"
+                <input className='datos' type="text"
                     name="Nombre"
                     placeholder='Nombre'
                     value={Nombre}
@@ -49,27 +54,50 @@ export const Checkout = () => {
                     required
                 />
                 <br /><br />
-                <input type="email"
+                <input className='datos' type="email"
                     name="Email"
                     placeholder='Email'
                     value={Email}
                     onChange={handleInputChange}
                 />
                 <br /><br />
-                <input type="number"
+                <input className='datos' type="number"
                     name="Telefono"
                     placeholder='Telefono'
                     value={Telefono}
                     onChange={handleInputChange}
                 />
                 <br /><br />
-                <input type="submit" value="Confirmar Compra" />
+                <input className='datos' type="submit" value="Confirmar Compra" />
             </form>
             }
             {orderId && <>
                 <h1>Felicitaciones tu compra se realizo con exito</h1>
                 <h3>Tu ID de Compra es: {orderId}</h3>
             </>}
-        </>
+            </section>
+        </Formulario>
     )
 }
+
+const Formulario = styled.div`
+
+width:400px;
+background-color:#222552dd;
+margin:auto;
+margin-top:50px;
+h1, h3{
+    font-size:22px;
+    color: white;
+    text-align:center;
+}
+.datos{
+    width:100%;
+    padding:10px;
+    font-size:15px;
+    margin-bottom:5px;
+    background:#6f74b9d3;
+    border:1px solid black;
+    color: white;
+}
+`

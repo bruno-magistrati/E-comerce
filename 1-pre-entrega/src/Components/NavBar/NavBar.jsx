@@ -11,23 +11,23 @@ function NavBar() {
         </div>
         <div className='Botones'>
           <ul className='menu-horizontal'>
-          <li>
-          <Link to='/' className='inicio'>Inicio</Link>
-          </li>
-          <li>
-          <Link to='/Tienda' className='tienda'>Tienda</Link>
-          </li>
-              <ul className='menu-vertical'>
-                <li>
-              <NavLink to={'/categoria/gorras'}> Gorras </NavLink>    
-                </li>
-                <li>
-              <NavLink  to={"/categoria/zapatillas"}>zapatillas</NavLink>
-                </li>
-              </ul>
-          <li>
-          <Link to='/Checkout' className='tienda'>Ver Checkout</Link>
-          </li>
+            <li>
+              <Link to='/' className='inicio'>Inicio</Link>
+            </li>
+            <li>
+              <Link to='/Tienda' className='tienda'>Tienda</Link>
+            </li>
+                <ul className='menu-vertical'>
+                  <li>
+                    <NavLink to={'/categoria/gorras'}>Gorras</NavLink>    
+                  </li>
+                  <li>
+                    <NavLink  to={"/categoria/zapatillas"}>Zapatillas</NavLink>
+                  </li>
+                </ul>
+            <li>
+              <Link to='/Checkout' className='tienda'>Ver Checkout</Link>
+            </li>
           </ul>
         </div>
       <Link to='/Carrito' className='carrito'><CartWidget/></Link>
@@ -39,7 +39,7 @@ function NavBar() {
 export default NavBar
 
 const NavStyle = styled.nav`
-  margin: 0;
+  margin: 0 0 20px 0;
   height:70px;
   background-color: #222552dd;
   display: flex;
@@ -59,23 +59,11 @@ const NavStyle = styled.nav`
     text-decoration: none;
     margin-right: 1rem;
 }
+.menu-horizontal li:hover{
+background-color:#2f325fdd;
+}
 .menu-horizontal{
   display:flex;
-  justify-content:space-around;
-}
-.menu-horizontal li:hover{
-background-color:red;
-}
-.menu-horizontal li {
-  display:block;
 }
 
-.menu-vertical{
-  /* display:none; */
-  /* position:absolute; */
-  width:200px;
-}
-.menu-vertical li:hover .menu-horizontal{
-  /* display:block; */
-}
 `

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Styled from 'styled-components'
 
 
 const ItemCount = ({ stock, initial, onAdd }) => {
@@ -17,23 +18,29 @@ const ItemCount = ({ stock, initial, onAdd }) => {
     }
 
     return (
+    <Botonera>
         <div>
-            <div className='row'>
-                <div className='col'>
-                    <button onClick={() => decrementar()} className='btn btn_item_count'   >-</button>
-                </div>
-                <div className='col'>
-                    <h3 >{count}</h3>
-                </div>
-                <div className='col'>
-                    <button onClick={() => incrementar()} className='btn btn_item_count' >+</button>
-                </div>
+            <div className='botones'>
+                    <button onClick={() => decrementar()}>-</button>
+                    <h3>{count}</h3>
+                    <button onClick={() => incrementar()}>+</button>
             </div>
-            <div className='row' >
-                <button className='btn btn_item_count' onClick={() => onAdd(count)}>Agregar al carrito</button>
+                <button onClick={() => onAdd(count)}>Agregar al carrito</button>
             </div>
-        </div>
+    </Botonera>
     );
 };
 
 export default ItemCount;
+
+const Botonera = Styled.div`
+display:flex;
+justify-content:center;
+.botones{
+    display:flex;
+    flex-direction:row;
+    h3{
+        margin:0 70px 0 70px
+    }
+}
+`

@@ -36,5 +36,4 @@ export default ItemListContainer
 
 const ItemListContainterStyled =styled.div `
 display:flex;
-background-color:blue;
   `   

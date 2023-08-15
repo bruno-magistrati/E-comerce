@@ -13,16 +13,13 @@ const Home = () => {
 
 export default Home
 
-const HomeStyle = styled.nav`
+const HomeStyle = styled.section`
 .titulo{
-    justify-content:center;
-    display:flex;
+width:340px;
+margin:auto;
 }
 h1{
 font-size:20px;
-display:flex;
-justify-content:center;
-background-color:#9121cd9f;
-width:500px;
+color:white;
 }
 `
