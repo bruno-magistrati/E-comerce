@@ -1,27 +1,66 @@
-import { createContext, useEffect, useState } from "react"
+import React, { createContext, useEffect, useState, useRef } from 'react';
 
-export const CartContext = createContext()
 
-const CartProvider = ({ children }) => {
+export const CartContext = createContext();
+export const CartProvider = ({ children }) => {
+    const [cart, setCart] = useState([]);
+    const initialized = useRef(false);
 
-    const [cart, setCart] = useState([])
+    useEffect(() => {
+        const cartFromStorage = JSON.parse(localStorage.getItem('cart')) || [];
+        setCart(cartFromStorage);
+    }, []);
+
+    useEffect(() => {
+        if (initialized.current) {
+            localStorage.setItem('cart', JSON.stringify(cart));
+            console.log("se ejecuta esto");
+        } else {
+            initialized.current = true;
+        }
+    }, [cart]);
 
     const addItem = (item, cant) => {
+        setCart((prevCart) => {
+            const existingItem = prevCart.find((prevItem) => prevItem.id === item.id);
+            if (existingItem) {
+                const updatedCart = prevCart.map((prevItem) =>
+                    prevItem.id === item.id
+                        ? { ...prevItem, cant: prevItem.cant + cant }
+                        : prevItem
+                );
+                return updatedCart;
+            } else {
+                return [...prevCart, { ...item, cant }];
+            }
+        });
+    };
 
-        setCart([...cart, { ...item, cant }])
+    const removeItem = (itemId) => {
+        setCart((prevCart) => prevCart.filter((item) => item.id !== itemId));
+        console.log("entro en remove");
+    };
 
-    }
-    useEffect(() => {
-        console.log(cart)
-    }, [cart])
+    const clearCart = () => {
+        setCart([]);
+        console.log("entro en Clear");
+    };
 
     const getQuantity = () => {
-        return cart.reduce((acum, unItem) => acum + unItem.cant, 0)
-    }
+        return cart.reduce((acc, item) => acc + item.cant, 0);
+    };
+
+    const getCartTotal = () => {
+        return cart.reduce((acc, item) => acc + item.price * item.cant, 0);
+    };
+
     return (
-        <CartContext.Provider value={{ cart, addItem, getQuantity }}>
+        <CartContext.Provider
+            value={{ cart, addItem, removeItem, clearCart, getQuantity, getCartTotal }}
+        >
             {children}
         </CartContext.Provider>
-    )
-}
-export default CartProvider
+    );
+};
+
+export default CartProvider;

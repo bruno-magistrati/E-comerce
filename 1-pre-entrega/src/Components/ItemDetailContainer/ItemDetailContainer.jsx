@@ -17,9 +17,9 @@ getDoc (queryDoc)
 
 
   return (
-    <ItemDetailContainerStyled>
-      <ItemDetail item={item} />
-      </ItemDetailContainerStyled>
+  <ItemDetailContainerStyled>
+    {item?<ItemDetail item={item} />:<h1>Cargando...</h1>}
+  </ItemDetailContainerStyled>  
   )
 }
 

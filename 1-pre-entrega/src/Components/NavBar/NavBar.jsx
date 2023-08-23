@@ -19,15 +19,12 @@ function NavBar() {
             </li>
                 <ul className='menu-vertical'>
                   <li>
-                    <NavLink to={'/categoria/gorras'}>Gorras</NavLink>    
+                    <NavLink to={'/Tienda/gorras'}>Gorras</NavLink>    
                   </li>
                   <li>
-                    <NavLink  to={"/categoria/zapatillas"}>Zapatillas</NavLink>
+                    <NavLink  to={"/Tienda/zapatillas"}>Zapatillas</NavLink>
                   </li>
                 </ul>
-            <li>
-              <Link to='/Checkout' className='tienda'>Ver Checkout</Link>
-            </li>
           </ul>
         </div>
       <Link to='/Carrito' className='carrito'><CartWidget/></Link>

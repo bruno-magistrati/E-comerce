@@ -5,45 +5,72 @@ import styled from 'styled-components'
 
 export const Cart = () => {
 
-    const { cart } = useContext(CartContext)
-    console.log("Carrito desde cart:", cart)
+    const { cart, removeItem } = useContext(CartContext)
+    const totalAmount = cart.reduce((total, unItem) => total + unItem.precio * unItem.cant, 0);
     return (
 
         <CarritoEstilo>
+    {cart.map((unItem) => (
+        <div className='Carrito' key={unItem.id} >
             <h1>Carrito</h1>
-            <hr />
-            {
-                cart.length === 0 ? <h1>Carrito Vacio</h1>
-                    : <div className='compra'>
-                        {cart.map(unItem => <div key={unItem.id}>
-                            <h3>Nombre: {unItem.nombre}</h3>
-                            <img className='imagen' src={unItem.img} alt={unItem.nombre}/>
-                            <p>Cantidad: {unItem.cant}</p>
-                            <p>Precio: {unItem.precio}</p>
-                            <hr />
-                        </div>)}
-                    </div>
-            }
-            <Link to='/checkout'>
-                <hr /> <button>Finalizar Compra</button>
+            <img className='imagen' src={unItem.img} alt={unItem.nombre}/>
+            <div>
+            <h3>Nombre: {unItem.nombre}</h3> 
+            <p>Precio: {unItem.precio + "$"}</p> 
+            <p>Cantidad: {unItem.cant}</p> 
+            <p>Precio Total: {unItem.precio * unItem.cant + "$"}</p> 
+            </div>
+            <button onClick={() => removeItem(unItem.id)}>Eliminar Producto</button>
+        </div>
+    ))}
+        {cart.length === 0 ? (
+            <div className='CarritoVacio'>
+                <h1>El carrito de compras esta vacio.</h1>
+            </div>
+        ) : (
+            <div className='Carrito'>
+            <div >
+                <h3>Total a pagar: ${totalAmount}</h3>
+            </div>
+            <Link to="/checkout">
+                <button>Finaliza tu Compra</button>
             </Link>
+            </div>
+        )}
+
         </CarritoEstilo>
     )
 }
 
 const CarritoEstilo = styled.section`
-margin:auto;
-width:500px;
+.Carrito{
+    margin:auto;
+width:400px;
 background-color:#222552dd;
 color:white;
 text-align:center;
 font-size:25px;
+h1{
+        font-size:35px;
+}
 .imagen{
     margin:auto;
     border:2px solid black;
-    width:250px;
+    width:300px;
 }
 .compra{
     background-color:#636ac827;
+}}
+.CarritoVacio{
+    width:900px;
+    margin:auto;
+    h1{
+        text-align:center;
+        color:white;
+        font-size:35px;
+        border:solid black 10px;
+        border-radius:12px;
+        background-color: #4fadcc;
+    }
 }
 `
