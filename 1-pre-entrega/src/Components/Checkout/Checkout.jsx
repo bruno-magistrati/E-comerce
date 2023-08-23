@@ -173,13 +173,12 @@ export const Checkout = () => {
                 </form>
             )}
             {orderId && (
-                <div className="order-success">
+                <div className="orden">
                     <h1>Felicitaciones tu compra se realizo con exito!</h1>
                     <br />
                     <h2>Tu ticket de compra es:</h2>
                     <h2>{orderId}</h2>
-                    <br />
-                    <br />
+                    <hr />
                     <p>  A la brevedad nos estaremos comunicandonos!</p>
                 </div>
             )}
@@ -213,5 +212,15 @@ h1, h3{
     color: white;
     text-align:center;
 }
-
+.orden{
+width:500px;
+border:solid 5px black;
+margin:auto;
+background-color:#222552dd;
+h2,p{
+    color:white;
+    font-size:25px;
+    text-align:center;
+}
+}
 `
